@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class BestLoanRates {
+    public static final Map<Integer, Float> bestRates = Map.of(1, 5.50f, 2, 3.45f, 3, 2.67f);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -12,18 +13,26 @@ public class BestLoanRates {
         System.out.println("Enter your name");
         String name = scanner.nextLine();
         System.out.println("Hello, " + name + "!");
+        System.out.println("Enter the loan term (in years)");
+        int loanTermInYears = scanner.nextInt();
+        float bestRate = getRates(loanTermInYears);
 
-
-       Map<Integer, Float> bestRates = new HashMap<>();
-       bestRates.put(1, 5.5f);
-       bestRates.put(2, 3.45f);
-       bestRates.put(3, 2.67f);
-
-       for(var i = 0; i < bestRates.size(); i++){
-            System.out.println(bestRates.get(i+1));
-       }
-
-        System.exit(0);
+        if(bestRate == 0.0f){
+            System.out.println("No available rates for term: " + loanTermInYears + " years");
+        }else{
+            System.out.println("Best Available Rate: " + bestRate +"%");
+        }
+        scanner.close();
+//       for(Float br : bestRates.values()){
+//            System.out.println(br);
+//       }
 
     }
+    public static float getRates(int loanTermInYears){
+        if(bestRates.containsKey(loanTermInYears)){
+            return bestRates.get(loanTermInYears);
+        }
+        return 0.0f;
+    }
+
 }
