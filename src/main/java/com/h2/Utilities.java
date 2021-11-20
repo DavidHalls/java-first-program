@@ -29,7 +29,7 @@ public class Utilities {
             out = Float.parseFloat(in);
         } catch (Exception e) {
             //TODO: handle exception
-            throw new IllegalArgumentException(in + " cannont be converted into a 'float' value. Exiting program.");
+            throw new IllegalArgumentException(in + " cannot be converted into a 'float' value. Exiting program.");
         }
         return out;
     }
