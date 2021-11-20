@@ -58,5 +58,6 @@ public class Finance {
             return;
         }
 
+        executeCommand(command, Arrays.copyOfRange(args,1,args.length));
     }
 }
